@@ -3,7 +3,6 @@ name= "umer"
 age = 24
 salary = 250000
 puts name,age,salary
-
 #constants
 API_KEY = "hukjksd8kjbd3bsud890-1"
 puts "API key is = #{API_KEY}"
