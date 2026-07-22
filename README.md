@@ -11,3 +11,4 @@ case loops
 time
 untill
 eachs
+break and next statement
