@@ -68,3 +68,13 @@ employees.each do |emp_id,emp_detail|
   puts "employee name is #{emp_detail[:name]}"
   puts "employee tittle is #{emp_detail[:job_title]}"
 end
+
+#break statement
+num=1
+loop do
+puts "hello"
+num+=1
+if num>5
+  break 
+end
+end
