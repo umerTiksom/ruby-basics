@@ -12,3 +12,5 @@ time
 untill
 eachs
 break and next statement
+
+After this I am creating the number guessing game in which the user enter the number and my program check that the number enter by the user is correct if it is correct the game is end else the user renter the number for check their luck
