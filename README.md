@@ -17,4 +17,4 @@ After this I am creating the number guessing game in which the user enter the nu
 
 In day 9
 first I look what is methood then build in methoodsss
-complete the hand on task in whcih I create a area calculation function tax calculation function email validation function reverse and palindrom the string function
+complete the hand on task in whcih I create a area calculation function tax calculation function email validation function reverse and palindrom the string function. After that I refactored the guessing game to convert simple code to functional base code
