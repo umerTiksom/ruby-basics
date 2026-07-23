@@ -1,39 +1,39 @@
-# arr1 = []
-# arr1.push('ali')
-# arr1.each do |n|
-#   puts "elements in array = #{n}"
-# end
-#
-# user input
-# arr2 = []
-# count = 5
-# for i in 1..count
-#   puts 'enter the number for array = '
-#   temp = gets.chomp.to_i
-#   arr2 << temp
-# end
-# count.times do
-#   puts 'enter the number for array = '
-#   temp = gets.chomp.to_i
-#   arr2 << temp
-# end
-# arr2.each do |n|
-#   puts "elements in array = #{n}"
-# end
-#
-# arr = [1, 2, 3, 4, 5, 6]
-# arr.pop
-# arr.delete(3)
-# arr = [4, 2, 6, 9, 1, 3]
-# arr = arr.sort.reverse
-# arr.each do |n|
-#   puts n
-# end
-# search = arr.include?(1)
-# index = arr.index(1)
-# search ? puts("your enter number is found and the index is #{index}") : puts('your enter number is not found')
+arr1 = []
+arr1.push('ali')
+arr1.each do |n|
+  puts "elements in array = #{n}"
+end
 
-# hashes
+user input
+arr2 = []
+count = 5
+for i in 1..count
+  puts 'enter the number for array = '
+  temp = gets.chomp.to_i
+  arr2 << temp
+end
+count.times do
+  puts 'enter the number for array = '
+  temp = gets.chomp.to_i
+  arr2 << temp
+end
+arr2.each do |n|
+  puts "elements in array = #{n}"
+end
+
+arr = [1, 2, 3, 4, 5, 6]
+arr.pop
+arr.delete(3)
+arr = [4, 2, 6, 9, 1, 3]
+arr = arr.sort.reverse
+arr.each do |n|
+  puts n
+end
+search = arr.include?(1)
+index = arr.index(1)
+search ? puts("your enter number is found and the index is #{index}") : puts('your enter number is not found')
+
+hashes
 cars = {
   name: 'honda city',
   model: 2024,
@@ -57,3 +57,34 @@ puts cars.inspect
 cars[:seats] = 4
 puts 'display after add the new feild'
 puts cars.inspect
+cars = {
+  car1: {
+    name: 'honda city',
+    color: 'red',
+    model: 2020,
+    engine: 1300
+  },
+  car2: {
+    name: 'toyota carolla',
+    color: 'black',
+    model: 2025,
+    engine: 1800
+  },
+  car3: {
+    name: 'MG HS',
+    color: 'white',
+    model: 2026,
+    engine: 2200
+  }
+}
+
+# iltrate the nasted hash
+cars.each do |id, details|
+  print "\n"
+  puts id
+  details.each do |key, value|
+    puts "#{key}:#{value}"
+  end
+  print "\n"
+  puts '.......................'
+end
