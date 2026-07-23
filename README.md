@@ -14,6 +14,7 @@ each
 break and next statement
 
 After this I am creating the number guessing game in which the user enter the number and my program check that the number enter by the user is correct if it is correct the game is end else the user renter the number for check their luck
+
 In day 9
 first I look what is methood then build in methoodsss
 complete the hand on task in whcih I create a area calculation function tax calculation function email validation function reverse and palindrom the string function
