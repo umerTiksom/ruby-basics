@@ -22,3 +22,6 @@ complete the hand on task in whcih I create a area calculation function tax calc
 In day 10
 I practice the array and hash in which I learn how to create add update delete search values from hash and array.
 create the complete student managemnt cli using nested hash
+
+week 2 revision
+complete the week 2 revision task
