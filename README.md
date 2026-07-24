@@ -20,4 +20,5 @@ first I look what is methood then build in methoodsss
 complete the hand on task in whcih I create a area calculation function tax calculation function email validation function reverse and palindrom the string function. After that I refactored the guessing game to convert simple code to functional base code
 
 In day 10
-I practice the array and hash in which I learn how to create add update delete search values from hash and array
+I practice the array and hash in which I learn how to create add update delete search values from hash and array.
+create the complete student managemnt cli using nested hash
