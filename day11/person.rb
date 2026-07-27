@@ -15,3 +15,4 @@ puts person1.name
 person2.name = 'ahmed'
 puts person2.name
 puts person3.name
+puts person3.age
