@@ -14,3 +14,4 @@ person3 = Person.new('Taha', 23)
 puts person1.name
 person2.name = 'ahmed'
 puts person2.name
+puts person3.name
