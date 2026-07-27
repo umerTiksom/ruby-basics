@@ -6,4 +6,3 @@ gem "rubocop"
 gem "debug"
 gem 'solargraph'
 gem 'htmlbeautifier'
-

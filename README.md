@@ -25,3 +25,6 @@ create the complete student managemnt cli using nested hash
 
 week 2 revision
 complete the week 2 revision task
+
+In day 11
+I practice the class and object in ruby how to create class object constructor setter and getter
