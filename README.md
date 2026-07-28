@@ -32,3 +32,4 @@ I practice the class and object in ruby how to create class object constructor s
 In day 12
 I practice the class methood for the class methood we use self. with class methood name.After that I also learn the access modifiers
 there are three types of modifiers.
+then done the employee inventory product and student task
