@@ -33,3 +33,7 @@ In day 12
 I practice the class methood for the class methood we use self. with class methood name.After that I also learn the access modifiers
 there are three types of modifiers.
 then done the employee inventory product and student task
+
+In the day13
+I learn about the inheritance module and the mixins in ruby
+in practice file I practice the inherit class and the module
