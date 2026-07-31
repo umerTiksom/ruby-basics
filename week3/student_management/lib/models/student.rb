@@ -8,4 +8,29 @@ class Student < Person
     @classroom = s_classroom
     @marks = s_marks
   end
+
+  def grade
+    case @marks
+    when 90..100
+      'A+'
+    when 80...90
+      'A'
+    when 70...80
+      'B'
+    when 60...70
+      'C'
+    when 50...60
+      'D'
+    else
+      'Fail'
+    end
+  end
+
+  def display
+    super
+    puts "Roll No : #{@roll_number}"
+    puts "Class   : #{@class_name}"
+    puts "Marks   : #{@marks}"
+    puts "Grade   : #{grade}"
+  end
 end
