@@ -1,5 +1,9 @@
 require_relative 'person'
+require_relative '../modules/printable'
+require_relative '../modules/validator'
 class Student < Person
+  include Validator
+  include Printable
   attr_accessor :roll_number, :classroom, :marks
 
   def initialize(s_id, s_name, s_age, s_gender, s_classroom, s_marks)
@@ -27,9 +31,10 @@ class Student < Person
   end
 
   def display
+    print_heading('Student List')
     super
     puts "Roll No : #{@roll_number}"
-    puts "Class   : #{@class_name}"
+    puts "Class   : #{@classroom}"
     puts "Marks   : #{@marks}"
     puts "Grade   : #{grade}"
   end
