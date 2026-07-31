@@ -1,10 +1,18 @@
 require 'faker'
 require 'colorize'
-require_relative 'models/student'
-require_relative 'models/teacher'
+
+require_relative './models/teacher'
+require_relative './models/student'
+
 class Menu
+  def initialize(student_service, teacher_service)
+    @student_service = student_service
+    @teacher_service = teacher_service
+  end
+
   def start
-    puts 'menu started'
+    puts 'Menu Started'.green
+
     student = Student.new(
       101,
       Faker::Name.name,
@@ -13,6 +21,7 @@ class Menu
       '10th',
       rand(20..100)
     )
+
     teacher = Teacher.new(
       201,
       Faker::Name.name,
@@ -22,17 +31,12 @@ class Menu
       Faker::Educator.subject
     )
 
-    student.display
+    @student_service.add_student(student)
+    @teacher_service.add_teacher(teacher)
 
-    puts
+    puts "\nStudents".blue
+    @student_service.list_students
 
-    teacher.display
-
-    puts
-    if student.valid_marks?(student.marks)
-      student.success('Student data is valid.')
-    else
-      student.error('Student marks are invalid.')
-    end
+    puts "\nTeachers".blue
   end
 end
