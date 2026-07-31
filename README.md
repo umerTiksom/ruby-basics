@@ -41,3 +41,7 @@ in practice file I practice the inherit class and the module
 In day14
 I learn about Proc block lamda and yield. Difference btw the proc and lamda
 after that I do the task of day 14 in practice task I create the logger function timmer function callback function and the banch mark function in which I use the concept of block, yield and blockgiven?
+
+In day15
+I learn about the gem gemfile gemfile lock bundle how to use gem file in project how to require gem file and how to require file in to another file in local app
+learn about the organized folder structure of the ruby project
