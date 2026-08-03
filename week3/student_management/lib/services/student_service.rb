@@ -33,17 +33,6 @@ class StudentService
     puts 'Student found successfully'.green
   end
 
-  def update_marks(roll_number, marks)
-    student = search_student(roll_number)
-
-    if student
-      student.marks = marks
-      success('Marks updated successfully.')
-    else
-      error('Student not found.')
-    end
-  end
-
   def delete_student(roll_number)
     student = search_student(roll_number)
 
