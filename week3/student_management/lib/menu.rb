@@ -69,7 +69,7 @@ class Menu
         )
         @student_service.add_student(student)
       elsif @user_input == 2
-        puts 'enter the roll number of student for search = '
+        puts 'enter the roll numbers of student for search = '
         @user_id = gets.chomp.to_i
         @student_service.search_student(@user_id)
       elsif @user_input == 3
