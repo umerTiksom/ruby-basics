@@ -43,14 +43,33 @@ class Menu
         exit
       end
       @project_services.create_project(@name, @description, @status)
+
+    # list all the projects
     elsif @user_input == 2
       @project_services.list_projects
+
+    # display the project details
     elsif @user_input == 3
-      # view_project
-      puts 'view the project detail'
+      puts 'Enter project id for details = '
+      id = gets.chomp.to_i
+      @project_services.view_project(id)
+
+    # update the project details
     elsif @user_input == 4
       # update_project
-      puts 'update the project detail'
+      puts 'Enter Project id ='
+      id = gets.chomp.to_i
+
+      puts 'Enter new name = '
+      name = gets.chomp
+
+      puts 'Enter new description = '
+      description = gets.chomp
+
+      puts 'Enter new status (Planning/Active/Completed) = '
+      status = gets.chomp
+
+      @project_services.update_project(id, name, description, status)
     elsif @user_input == 5
       # delete_project
       puts 'Delete the project '

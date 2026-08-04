@@ -61,4 +61,56 @@ class Project_services
     end
     puts
   end
+
+  # feature 3
+  def view_project(id)
+    projects = FileManager.read_json('data/project.json')
+
+    project = projects.find { |p| p['id'] == id }
+
+    if project.nil?
+      puts 'Project not found!'.red
+      return
+    end
+
+    total_tasks = 10
+    completed_tasks = 6
+    pending_tasks = 4
+
+    progress = (completed_tasks.to_f / total_tasks * 100).to_i
+
+    puts
+    puts ('=' * 30).yellow
+    puts 'Project Details'
+    puts ('=' * 30).yellow
+    puts "Project : #{project['name']}"
+    puts "Status  : #{project['status']}"
+    puts
+    puts "Tasks      : #{total_tasks}"
+    puts "Completed : #{completed_tasks}"
+    puts "Pending   : #{pending_tasks}"
+    puts
+    puts "Progress : #{progress}%"
+    puts '=' * 30
+  end
+
+  def update_project(id, name, des, status)
+    projects = FileManager.read_json('data/project.json')
+
+    project = projects.find { |p| p['id'] == id }
+
+    if project.nil?
+      puts 'Project not found!'.red
+      return
+    end
+
+    project['name'] = name
+    project['description'] = des
+    project['status'] = status
+
+    FileManager.write_json('data/project.json', projects)
+
+    puts
+    puts 'Project updated successfully!'.green
+  end
 end

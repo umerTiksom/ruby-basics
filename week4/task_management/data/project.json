@@ -1,9 +1,9 @@
 [
   {
     "id": 1,
-    "name": "rails",
-    "description": "this is the rails project",
-    "status": "active",
+    "name": "driving app",
+    "description": "this is the driving app",
+    "status": "planning",
     "created_date": "2026-08-04"
   },
   {
