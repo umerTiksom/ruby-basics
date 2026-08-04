@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "rails",
+    "description": "this is the rails project",
+    "status": "active",
+    "created_date": "2026-08-04"
+  },
+  {
+    "id": 2,
+    "name": "task manager",
+    "description": "this is the task management project",
+    "status": "planning",
+    "created_date": "2026-08-04"
+  }
+]
