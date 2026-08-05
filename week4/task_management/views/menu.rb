@@ -71,8 +71,10 @@ class Menu
 
       @project_services.update_project(id, name, description, status)
     elsif @user_input == 5
-      # delete_project
-      puts 'Delete the project '
+      puts 'Enter Project ID to delete:'
+      id = gets.chomp.to_i
+
+      @project_service.delete_project(id)
     end
   end
 end

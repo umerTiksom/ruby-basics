@@ -113,4 +113,29 @@ class Project_services
     puts
     puts 'Project updated successfully!'.green
   end
+
+  def delete_project(id)
+    projects = FileManager.read_json('data/project.json')
+
+    project = projects.find { |p| p['id'] == id }
+
+    if project.nil?
+      puts 'Project not found!'.red
+      return
+    end
+
+    puts
+    print "Are you sure you want to delete project ##{id}? (y/n): ".red
+    choice = gets.chomp.downcase
+
+    if choice == 'y'
+      projects.reject! { |p| p['id'] == id }
+
+      FileManager.write_json('data/project.json', projects)
+
+      puts 'Project deleted successfully!'.green
+    else
+      puts 'Deletion cancelled.'.green
+    end
+  end
 end
