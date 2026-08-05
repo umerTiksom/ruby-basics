@@ -105,4 +105,27 @@ class Task_services
     puts
     puts 'Task updated successfully'.green
   end
+
+  # complete the task
+  def complete_task(id)
+    tasks = FileManager.read_json('data/task.json')
+
+    task = tasks.find { |t| t['id'] == id }
+
+    if task.nil?
+      puts 'Task not found.'
+      return
+    end
+
+    if task['status'].downcase == 'completed'
+      puts "Task ##{task_id} is already completed."
+      return
+    end
+
+    task['status'] = 'completed'
+
+    FileManager.write_json('data/task.json', tasks)
+
+    puts "Task ##{id} marked as completed."
+  end
 end

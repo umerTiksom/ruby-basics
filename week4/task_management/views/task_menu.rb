@@ -96,6 +96,12 @@ class Task_menu
       else
         puts 'invalid Task update choice'
       end
+
+    elsif @user_input == 5
+      print 'Enter Task ID = '
+      task_id = gets.chomp.to_i
+
+      @task_services.complete_task(task_id)
     end
   end
 end
