@@ -134,8 +134,10 @@ class Project_services
       FileManager.write_json('data/project.json', projects)
 
       puts 'Project deleted successfully!'.green
-    else
+    elsif choice == 'n'
       puts 'Deletion cancelled.'.green
+    else
+      puts 'Enter invalid Choice'.red
     end
   end
 end

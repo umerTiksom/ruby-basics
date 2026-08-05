@@ -1,7 +1,9 @@
 require_relative '../services/projects_services'
+require_relative '../modules/validator'
 require 'colorize'
 require 'date'
 class Menu
+  include Validator
   attr_accessor :user_input
 
   def initialize(project_service)
@@ -30,14 +32,16 @@ class Menu
       @description = gets.chomp.to_s
       puts 'enter the project status [Planning, Active, Completed, Archived]'.blue
       @status = gets.chomp.to_s.downcase
-
+      flag = project_status_validator(@status)
       #  validate project status
-      if @status != 'planning' && @status != 'active' && @status != 'complete' && @status != 'archived'
+      if flag == true
         puts
         puts ' you enter invalid status'.red
         exit
       end
-      if @name == '' || @description == ''
+      name_flag = name_validator(@name)
+      desc_flag = desc_validator(@description)
+      if name_flag == true || desc_flag == true
         puts
         puts 'input feilds must be filled'.red
         exit
@@ -52,6 +56,11 @@ class Menu
     elsif @user_input == 3
       puts 'Enter project id for details = '
       id = gets.chomp.to_i
+      id_flag = id_check(id)
+      unless id_flag
+        puts 'Id does not match'.red
+        exit
+      end
       @project_services.view_project(id)
 
     # update the project details
@@ -68,12 +77,20 @@ class Menu
 
       puts 'Enter new status (Planning/Active/Completed) = '
       status = gets.chomp
-
+      status_flag = project_status_validator(status)
+      if status_flag == true
+        puts 'Enter invalid status'.red
+        exit
+      end
       @project_services.update_project(id, name, description, status)
     elsif @user_input == 5
       puts 'Enter Project ID to delete:'
       id = gets.chomp.to_i
-
+      id_flag = id_check(id)
+      unless id_flag
+        puts 'Id does not match'.red
+        exit
+      end
       @project_service.delete_project(id)
     end
   end
