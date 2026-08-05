@@ -21,4 +21,8 @@ module Validator
     projects = FileManager.read_json('data/project.json')
     projects.find { |p| p['id'] == choice }
   end
+
+  def task_priority_validator(choice)
+    !%w[low high medium].include?(choice.downcase)
+  end
 end
