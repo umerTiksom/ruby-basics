@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "title": "login ",
+    "title": "navbar",
     "description": "this is the login task ",
     "project_id": 1,
     "status": "pending",

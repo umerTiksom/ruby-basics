@@ -83,4 +83,26 @@ class Task_services
     puts "Due Date      : #{task['due_date']}"
     puts "Created At : #{task['created_date']}"
   end
+
+  # update task
+  def update_task(id, data, choice)
+    tasks = FileManager.read_json('data/task.json')
+    task = tasks.find { |t| t['id'] == id }
+    if task.nil?
+      puts 'Task not found'.red
+      return
+    end
+    if choice == 1
+      task['title'] = data
+    elsif choice == 2
+      task['description'] = data
+    elsif choice == 3
+      task['priority'] = data
+    elsif choice == 4
+      task['status'] = data
+    end
+    FileManager.write_json('data/task.json', tasks)
+    puts
+    puts 'Task updated successfully'.green
+  end
 end

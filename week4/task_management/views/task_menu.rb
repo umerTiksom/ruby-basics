@@ -61,6 +61,41 @@ class Task_menu
       puts 'Enter the task id '
       id = gets.chomp.to_i
       @task_services.view_task_details(id)
+
+    elsif @user_input == 4
+      puts ('=' * 30).green
+      puts 'Update Task'
+      puts ('=' * 30).green
+      puts
+      puts 'Press 1 for Title Update'
+      puts 'Press 2 for Description Update '
+      puts 'Press 3 for Priority Update'
+      puts 'Press 4 for Status Update'
+      puts
+      puts 'Enter the task id = '
+      id = gets.chomp.to_i
+      puts 'Enter the choice = '
+      @update_choice = gets.chomp.to_i
+      # Tittle update call
+      if @update_choice == 1
+        puts 'Enter the new Title: '
+        @tittle = gets.chomp.downcase
+        @task_services.update_task(id, @tittle, @update_choice)
+      elsif @update_choice == 2
+        puts 'Enter the new Decription: '
+        @decs = gets.chomp.downcase
+        @task_services.update_task(id, @tittle, @update_choice)
+      elsif @update_choice == 3
+        puts 'Enter the new Priority [Low, Medium, High]: '
+        @priority = gets.chomp.downcase
+        @task_services.update_task(id, @tittle, @update_choice)
+      elsif @update_choice == 4
+        puts 'Enter the new Status [Pending, In Progress, Completed] :'
+        @status = gets.chomp.downcase
+        @task_services.update_task(id, @tittle, @update_choice)
+      else
+        puts 'invalid Task update choice'
+      end
     end
   end
 end
