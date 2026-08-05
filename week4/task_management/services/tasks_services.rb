@@ -60,4 +60,27 @@ class Task_services
       )
     end
   end
+
+  # view the task details
+  def view_task_details(id)
+    tasks = FileManager.read_json('data/task.json')
+    projects = FileManager.read_json('data/project.json')
+    task = tasks.find { |task| task['id'] == id }
+    if task.nil?
+      puts 'Task not found!'.red
+      return
+    end
+    project = projects.find { |p| p['id'] == task['project_id'] }
+    @name = project['name']
+    puts
+    puts ('=' * 30).yellow
+    puts 'Task Details'
+    puts ('=' * 30).yellow
+    puts "Title : #{task['title']}"
+    puts "Project : #{@name}"
+    puts "Priority : #{task['priority']}"
+    puts "Status  : #{task['status']}"
+    puts "Due Date      : #{task['due_date']}"
+    puts "Created At : #{task['created_date']}"
+  end
 end

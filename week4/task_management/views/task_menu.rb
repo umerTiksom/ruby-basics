@@ -52,8 +52,15 @@ class Task_menu
         exit
       end
       @task_services.create_task(@tittle, @description, @p_id, @priority, @due_date)
+    # list all the task
     elsif @user_input == 2
       @task_services.list_task
+    # list the task details
+    elsif @user_input == 3
+      puts
+      puts 'Enter the task id '
+      id = gets.chomp.to_i
+      @task_services.view_task_details(id)
     end
   end
 end
