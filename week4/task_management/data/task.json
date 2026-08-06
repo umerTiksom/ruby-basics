@@ -14,9 +14,19 @@
     "title": "hero section portion",
     "description": "this is the hero task section",
     "project_id": 1,
-    "status": "pending",
+    "status": "completed",
     "priority": "low",
     "due_date": "2026-12-30",
+    "created_date": "2026-08-06"
+  },
+  {
+    "id": 4,
+    "title": "footer",
+    "description": "this is the footer section it contains all the company info and copyrights row",
+    "project_id": 2,
+    "status": "pending",
+    "priority": "high",
+    "due_date": "2026-08-12",
     "created_date": "2026-08-06"
   }
 ]

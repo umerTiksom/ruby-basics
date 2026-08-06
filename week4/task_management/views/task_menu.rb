@@ -101,7 +101,7 @@ class Task_menu
         puts
         puts 'Enter the new Decription: '
         @decs = gets.chomp.downcase
-        @task_services.update_task(id, @tittle, @update_choice)
+        @task_services.update_task(id, @decs, @update_choice)
       elsif @update_choice == 3
         puts
         puts 'Enter the new Priority [Low, Medium, High]: '
@@ -113,19 +113,19 @@ class Task_menu
           puts ' you enter invalid Priority'.red
           return
         end
-        @task_services.update_task(id, @tittle, @update_choice)
+        @task_services.update_task(id, @priority, @update_choice)
       elsif @update_choice == 4
         puts
         puts 'Enter the new Status [Pending, In Progress, Completed] :'
-        @status = gets.chomp.downcase
-        flag = project_status_validator(@status)
-        if flag
+        @status = gets.chomp.to_s.downcase
+
+        if @status != 'pending' && @status != 'in progress' && @status != 'completed'
           puts
           puts 'you enter invalid status'.red
           return
         end
 
-        @task_services.update_task(id, @tittle, @update_choice)
+        @task_services.update_task(id, @status, @update_choice)
       else
 
         puts 'invalid Task update choice'
