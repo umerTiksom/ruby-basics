@@ -17,6 +17,7 @@ class Task_menu
     puts 'Press 4 for update the task '
     puts 'Press 5 for mark task as Complete'
     puts 'Press 6 for delete the task'
+    puts 'Press 7 for search the task'
     puts
     puts 'Enter the number = '
     @user_input = gets.chomp.to_i
@@ -138,6 +139,7 @@ class Task_menu
         return
       end
       @task_services.complete_task(task_id)
+
     #  delete the task
     elsif @user_input == 6
       puts
@@ -149,6 +151,13 @@ class Task_menu
         return
       end
       @task_services.delete_task(@delete_task_id)
+
+      # search by keyword from the task
+    elsif @user_input == 7
+      puts
+      puts 'Search: '.blue
+      search_choice = gets.chomp.to_s.downcase
+      @task_services.search_by_keyword(search_choice)
     end
   end
 end

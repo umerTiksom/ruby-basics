@@ -145,4 +145,27 @@ class Task_services
       puts 'Enter Invalid Choice'.red
     end
   end
+
+  # search keywords from the task title and description
+  def search_by_keyword(search)
+    tasks = FileManager.read_json('data/task.json')
+    search_result = tasks.select do |task|
+      task['title'].downcase.include?(search) ||
+        task['description'].downcase.include?(search)
+    end
+
+    if search_result.empty?
+      puts
+      puts 'No record found...'.green
+    else
+      search_result.each do |final|
+        puts
+        if final['title'].include?(search)
+          puts "#{final['id']}. #{final['title']}"
+        else
+          puts "#{final['id']}. #{final['description']}"
+        end
+      end
+    end
+  end
 end
