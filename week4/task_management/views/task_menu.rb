@@ -18,6 +18,7 @@ class Task_menu
     puts 'Press 5 for mark task as Complete'
     puts 'Press 6 for delete the task'
     puts 'Press 7 for search the task'
+    puts 'Press 8 for filter the task'
     puts
     puts 'Enter the number = '
     @user_input = gets.chomp.to_i
@@ -158,6 +159,39 @@ class Task_menu
       puts 'Search: '.blue
       search_choice = gets.chomp.to_s.downcase
       @task_services.search_by_keyword(search_choice)
+    elsif @user_input == 8
+      puts
+      puts 'Press 1 for filter task by description'
+      puts 'Press 2 for filter task by priority'
+      puts
+      puts 'Enter the filter choice = '
+      filter_choice = gets.chomp.to_i
+      if filter_choice == 1
+        puts
+        puts 'Enter the filter keyword = '
+        @filter_input = gets.chomp.to_s.downcase
+        error = desc_validator(@filter_input)
+        if error == true
+          puts 'Description must be filled'
+        else
+          @task_services.filter_task(@filter_input, filter_choice)
+        end
+
+      elsif filter_choice == 2
+        puts 'Enter the filter priority [Low, Medium, High] = '
+        @filter_input = gets.chomp.to_s.downcase
+        error = task_priority_validator(@filter_input)
+        if error == true
+          puts 'You Enter invalid priority.....'.red
+          nil
+        else
+          @task_services.filter_task(@filter_input, filter_choice)
+        end
+      else
+        puts 'Invalid option...'.red
+        nil
+      end
+
     end
   end
 end

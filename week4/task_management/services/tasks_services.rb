@@ -168,4 +168,40 @@ class Task_services
       end
     end
   end
+
+  # filter the task by description or priority
+  def filter_task(keyword, choice)
+    tasks = FileManager.read_json('data/task.json')
+
+    # filter by description
+    if choice == 1
+
+      filter_task = tasks.select do |filter|
+        filter['description'].include?(keyword)
+      end
+      if filter_task.empty?
+        puts 'No Task Found'
+      else
+        puts format('%-5s %-25s %-25s ', 'ID', 'Title', 'Description').yellow
+        filter_task.each do |result|
+          puts format('%-5s %-25s %-25s ', result['id'], result['title'], result['description'])
+        end
+      end
+
+    # filter by priority
+    elsif choice == 2
+      filter_task = tasks.select do |result|
+        result['priority'] == keyword
+      end
+      if filter_task.empty?
+        puts
+        puts 'No Record Found'.yellow
+      else
+        puts format('%-5s %-25s %-25s', 'ID', 'Title', 'Priority')
+        filter_task.each do |result|
+          puts format('%-5s %-25s %-25s ', result['id'], result['title'], result['priority'])
+        end
+      end
+    end
+  end
 end
