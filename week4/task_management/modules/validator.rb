@@ -25,4 +25,9 @@ module Validator
   def task_priority_validator(choice)
     !%w[low high medium].include?(choice.downcase)
   end
+
+  def task_id_check(choice)
+    tasks = FileManager.read_json('data/task.json')
+    tasks.find { |t| t['id'] == choice }
+  end
 end

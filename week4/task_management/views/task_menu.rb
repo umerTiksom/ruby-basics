@@ -74,6 +74,11 @@ class Task_menu
       puts
       puts 'Enter the task id = '
       id = gets.chomp.to_i
+      id_check = task_id_check(id)
+      unless id_check
+        puts 'Id does not match'.red
+        exit
+      end
       puts 'Enter the choice = '
       @update_choice = gets.chomp.to_i
       # Tittle update call
@@ -88,10 +93,24 @@ class Task_menu
       elsif @update_choice == 3
         puts 'Enter the new Priority [Low, Medium, High]: '
         @priority = gets.chomp.downcase
+        flag = task_priority_validator(@priority)
+        #  validate project status
+        if flag == true
+          puts
+          puts ' you enter invalid Priority'.red
+          exit
+        end
         @task_services.update_task(id, @tittle, @update_choice)
       elsif @update_choice == 4
         puts 'Enter the new Status [Pending, In Progress, Completed] :'
         @status = gets.chomp.downcase
+        flag = project_status_validator(@status)
+        if flag
+          puts
+          puts 'you enter invalid status'.red
+          exit
+        end
+
         @task_services.update_task(id, @tittle, @update_choice)
       else
         puts 'invalid Task update choice'
@@ -100,7 +119,11 @@ class Task_menu
     elsif @user_input == 5
       print 'Enter Task ID = '
       task_id = gets.chomp.to_i
-
+      id_check = task_id_check(task_id)
+      unless id_check
+        puts 'Id does not match'.red
+        exit
+      end
       @task_services.complete_task(task_id)
     end
   end
