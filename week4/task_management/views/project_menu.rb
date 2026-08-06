@@ -3,6 +3,8 @@ require_relative '../modules/validator'
 require 'colorize'
 require 'date'
 class Project_menu
+  include Validator
+
   def initialize(project_service)
     @project_services = project_service
   end

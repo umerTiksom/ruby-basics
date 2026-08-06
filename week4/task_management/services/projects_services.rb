@@ -65,6 +65,7 @@ class Project_services
   # feature 3
   def view_project(id)
     projects = FileManager.read_json('data/project.json')
+    tasks = FileManager.read_json('data/task.json')
 
     project = projects.find { |p| p['id'] == id }
 
@@ -72,12 +73,18 @@ class Project_services
       puts 'Project not found!'.red
       return
     end
+    project_tasks = tasks.select { |task| task['project_id'] == id }
+    total_tasks = project_tasks.count
+    completed_tasks = project_tasks.count do |task|
+      task['status'].downcase == 'completed'
+    end
+    pending_tasks = total_tasks - completed_tasks
 
-    total_tasks = 10
-    completed_tasks = 6
-    pending_tasks = 4
-
-    progress = (completed_tasks.to_f / total_tasks * 100).to_i
+    progress = if total_tasks.zero?
+                 0
+               else
+                 (completed_tasks.to_f / total_tasks * 100).to_i
+               end
 
     puts
     puts ('=' * 30).yellow
