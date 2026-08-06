@@ -37,14 +37,14 @@ class Project_menu
       if flag == true
         puts
         puts ' you enter invalid status'.red
-        exit
+        return
       end
       name_flag = name_validator(@name)
       desc_flag = desc_validator(@description)
       if name_flag == true || desc_flag == true
         puts
         puts 'input feilds must be filled'.red
-        exit
+        return
       end
       @project_services.create_project(@name, @description, @status)
 
@@ -59,7 +59,7 @@ class Project_menu
       id_flag = id_check(id)
       unless id_flag
         puts 'Id does not match'.red
-        exit
+        return
       end
       @project_services.view_project(id)
 
@@ -80,7 +80,7 @@ class Project_menu
       status_flag = project_status_validator(status)
       if status_flag == true
         puts 'Enter invalid status'.red
-        exit
+        return
       end
       @project_services.update_project(id, name, description, status)
     elsif @user_input == 5
@@ -89,7 +89,7 @@ class Project_menu
       id_flag = id_check(id)
       unless id_flag
         puts 'Id does not match'.red
-        exit
+        return
       end
       @project_services.delete_project(id)
     end

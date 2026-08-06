@@ -128,4 +128,21 @@ class Task_services
 
     puts "Task ##{id} marked as completed."
   end
+
+  # delete the task process
+  def delete_task(id)
+    tasks = FileManager.read_json('data/task.json')
+    puts
+    print "Are you sure to delete the task #{id}? (y/n) "
+    user_choice = gets.chomp.to_s.downcase
+    if user_choice == 'y'
+      tasks.reject! { |t| t['id'] == id }
+      FileManager.write_json('data/task.json', tasks)
+      puts 'Task Delete successfully'.green
+    elsif user_choice == 'n'
+      puts 'Cancel the delete task process'.green
+    else
+      puts 'Enter Invalid Choice'.red
+    end
+  end
 end

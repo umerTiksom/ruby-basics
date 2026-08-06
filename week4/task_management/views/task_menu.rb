@@ -16,6 +16,7 @@ class Task_menu
     puts 'Press 3 for view the task details'
     puts 'Press 4 for update the task '
     puts 'Press 5 for mark task as Complete'
+    puts 'Press 6 for delete the task'
     puts
     puts 'Enter the number = '
     @user_input = gets.chomp.to_i
@@ -36,20 +37,20 @@ class Task_menu
       id_check = id_check(@p_id)
       unless id_check
         puts 'Id does not match'.red
-        exit
+        return
       end
       flag = task_priority_validator(@priority)
       #  validate project status
       if flag == true
         puts
         puts ' you enter invalid Priority'.red
-        exit
+        return
       end
       tittle_flag = name_validator(@tittle)
       desc_flag = desc_validator(@description)
       if tittle_flag == true || desc_flag == true
         puts 'Feilds must be filled'.red
-        exit
+        return
       end
       @task_services.create_task(@tittle, @description, @p_id, @priority, @due_date)
     # list all the task
@@ -77,7 +78,7 @@ class Task_menu
       id_check = task_id_check(id)
       unless id_check
         puts 'Id does not match'.red
-        exit
+        return
       end
       puts 'Enter the choice = '
       @update_choice = gets.chomp.to_i
@@ -98,7 +99,7 @@ class Task_menu
         if flag == true
           puts
           puts ' you enter invalid Priority'.red
-          exit
+          return
         end
         @task_services.update_task(id, @tittle, @update_choice)
       elsif @update_choice == 4
@@ -108,7 +109,7 @@ class Task_menu
         if flag
           puts
           puts 'you enter invalid status'.red
-          exit
+          return
         end
 
         @task_services.update_task(id, @tittle, @update_choice)
@@ -122,9 +123,20 @@ class Task_menu
       id_check = task_id_check(task_id)
       unless id_check
         puts 'Id does not match'.red
-        exit
+        return
       end
       @task_services.complete_task(task_id)
+    #  delete the task
+    elsif @user_input == 6
+      puts
+      puts 'Enter the task id for delete '
+      @delete_task_id = gets.chomp.to_i
+      flag = task_id_check(@delete_task_id)
+      unless flag
+        puts 'Task Id not match'.red
+        return
+      end
+      @task_services.delete_task(@delete_task_id)
     end
   end
 end
