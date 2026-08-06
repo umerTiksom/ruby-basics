@@ -30,10 +30,4 @@ module Validator
     tasks = FileManager.read_json('data/task.json')
     tasks.find { |t| t['id'] == choice }
   end
-
-  def task_status_validator(choice)
-    return unless choice != 'pending' || choice != 'in progress' || choice != 'completed'
-
-    1
-  end
 end
