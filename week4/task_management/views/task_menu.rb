@@ -28,14 +28,18 @@ class Task_menu
       puts
       puts 'Enter the task description = '.blue
       @description = gets.chomp.to_s
-      puts 'Enter the project id = '
+      puts
+      puts 'Enter the project id = '.blue
       @p_id = gets.chomp.to_i
-      puts 'Enter the task priority [Low, Medium, High]'
+      puts
+      puts 'Enter the task priority [Low, Medium, High]'.blue
       @priority = gets.chomp.to_s.downcase
-      puts 'Enter Due Date (YYYY-MM-DD):'
+      puts
+      puts 'Enter Due Date (YYYY-MM-DD):'.blue
       @due_date = Date.parse(gets.chomp)
       id_check = id_check(@p_id)
       unless id_check
+        puts
         puts 'Id does not match'.red
         return
       end
@@ -49,6 +53,7 @@ class Task_menu
       tittle_flag = name_validator(@tittle)
       desc_flag = desc_validator(@description)
       if tittle_flag == true || desc_flag == true
+        puts
         puts 'Feilds must be filled'.red
         return
       end
@@ -77,21 +82,26 @@ class Task_menu
       id = gets.chomp.to_i
       id_check = task_id_check(id)
       unless id_check
+        puts
         puts 'Id does not match'.red
         return
       end
+      puts
       puts 'Enter the choice = '
       @update_choice = gets.chomp.to_i
       # Tittle update call
       if @update_choice == 1
+        puts
         puts 'Enter the new Title: '
         @tittle = gets.chomp.downcase
         @task_services.update_task(id, @tittle, @update_choice)
       elsif @update_choice == 2
+        puts
         puts 'Enter the new Decription: '
         @decs = gets.chomp.downcase
         @task_services.update_task(id, @tittle, @update_choice)
       elsif @update_choice == 3
+        puts
         puts 'Enter the new Priority [Low, Medium, High]: '
         @priority = gets.chomp.downcase
         flag = task_priority_validator(@priority)
@@ -103,6 +113,7 @@ class Task_menu
         end
         @task_services.update_task(id, @tittle, @update_choice)
       elsif @update_choice == 4
+        puts
         puts 'Enter the new Status [Pending, In Progress, Completed] :'
         @status = gets.chomp.downcase
         flag = project_status_validator(@status)
@@ -114,6 +125,7 @@ class Task_menu
 
         @task_services.update_task(id, @tittle, @update_choice)
       else
+
         puts 'invalid Task update choice'
       end
 
