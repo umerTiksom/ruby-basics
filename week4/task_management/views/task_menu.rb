@@ -33,12 +33,29 @@ class Task_menu
       puts
       puts 'Enter the project id = '.blue
       @p_id = gets.chomp.to_i
+      id_flag = id_check(@p_id)
+      unless id_flag
+        puts 'Id does not match'.red
+        return
+      end
       puts
       puts 'Enter the task priority [Low, Medium, High]'.blue
       @priority = gets.chomp.to_s.downcase
       puts
       puts 'Enter Due Date (YYYY-MM-DD):'.blue
-      @due_date = Date.parse(gets.chomp)
+      @due_date = gets.chomp
+      begin
+        due_date = Date.strptime(@due_date, '%Y-%m-%d')
+      rescue ArgumentError
+        puts 'Invalid Date.'.red
+        return
+      end
+
+      if due_date < Date.today
+        puts 'Due Date must be greater than or equal to current date.'.red
+        return
+      end
+
       id_check = id_check(@p_id)
       unless id_check
         puts
@@ -68,6 +85,11 @@ class Task_menu
       puts
       puts 'Enter the task id '
       id = gets.chomp.to_i
+      id_flag = task_id_check(id)
+      unless id_flag
+        puts 'Task Id does not match'.red
+        return
+      end
       @task_services.view_task_details(id)
 
     elsif @user_input == 4

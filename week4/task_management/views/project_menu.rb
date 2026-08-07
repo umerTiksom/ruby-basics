@@ -68,13 +68,22 @@ class Project_menu
       # update_project
       puts 'Enter Project id ='
       id = gets.chomp.to_i
-
+      unless id_flag
+        puts 'Id does not match'.red
+        return
+      end
       puts 'Enter new name = '
       name = gets.chomp
 
       puts 'Enter new description = '
       description = gets.chomp
-
+      name_flag = name_validator(@name)
+      desc_flag = desc_validator(@description)
+      if name_flag == true || desc_flag == true
+        puts
+        puts 'input feilds must be filled'.red
+        return
+      end
       puts 'Enter new status (Planning/Active/Completed) = '
       status = gets.chomp
       status_flag = project_status_validator(status)
@@ -92,6 +101,9 @@ class Project_menu
         return
       end
       @project_services.delete_project(id)
+    else
+      puts 'Enter Invalid Choice'.red
+      nil
     end
   end
 end
